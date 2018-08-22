@@ -1,7 +1,7 @@
 defmodule SerialLoraCommunicator.MixProject do
   use Mix.Project
 
-  @target System.get_env("MIX_TARGET") || "rpi"
+  @target System.get_env("MIX_TARGET") || "nerves_system_ch341_rpi"
 
   def project do
     [
@@ -22,6 +22,7 @@ defmodule SerialLoraCommunicator.MixProject do
   # Starting nerves_bootstrap adds the required aliases to Mix.Project.config()
   # Aliases are only added if MIX_TARGET is set.
   def bootstrap(args) do
+    System.put_env("MIX_TARGET", "nerves_system_ch341_rpi")
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -60,5 +61,6 @@ defmodule SerialLoraCommunicator.MixProject do
   defp system("ev3"), do: [{:nerves_system_ev3, "~> 1.0", runtime: false}]
   defp system("qemu_arm"), do: [{:nerves_system_qemu_arm, "~> 1.0", runtime: false}]
   defp system("x86_64"), do: [{:nerves_system_x86_64, "~> 1.0", runtime: false}]
+  defp system("nerves_system_ch341_rpi"), do: [{:nerves_system_ch341_rpi, git: "git@github.com:sjoulbak/nerves_system_ch341_rpi.git", runtime: false}]
   defp system(target), do: Mix.raise("Unknown MIX_TARGET: #{target}")
 end
