@@ -1,24 +1,27 @@
-# SerialLoraCommunicator
+# Serial <-> LoRa Communicator
 
-**TODO: Add description**
+A communicator with LoRa through a serial port. This is done by using the LoRa
+Wemos module https://github.com/hallard/WeMos-Lora with a Wemos D1 mini pro. The Wemos
+is connected to my Pi with USB -> Micro USB.
+
+With this project we can send "commands" to the open LoRa network. Please keep in mind that
+the Wemos also needs some firmware for this. (This is work in progress)
+
+## Questions
+
+For questions please contact `@sjoulbak` on the Elixir slack.
 
 ## Targets
 
-Nerves applications produce images for hardware targets based on the
-`MIX_TARGET` environment variable. If `MIX_TARGET` is unset, `mix` builds an
-image that runs on the host (e.g., your laptop). This is useful for executing
-logic tests, running utilities, and debugging. Other targets are represented by
-a short name like `rpi3` that maps to a Nerves system image for that platform.
-All of this logic is in the generated `mix.exs` and may be customized. For more
-information about targets see:
-
-https://hexdocs.pm/nerves/targets.html#content
+Currently this project only supports the `nerves_system_rpi` project. Since
+there should be a special setting enabled before this project can communicate
+with the CH341 module. I cloned the `nerves_system_rpi` repo and added this config.
+This project has the name `nerves_system_ch341_rpi` and can be found: https://github.com/sjoulbak/nerves_system_ch341_rpi
 
 ## Getting Started
 
 To start your Nerves app:
-  * `export MIX_TARGET=my_target` or prefix every command with
-    `MIX_TARGET=my_target`. For example, `MIX_TARGET=rpi3`
+  * `export MIX_TARGET=nerves_system_ch341_rpi`
   * Install dependencies with `mix deps.get`
   * Create firmware with `mix firmware`
   * Burn to an SD card with `mix firmware.burn`
