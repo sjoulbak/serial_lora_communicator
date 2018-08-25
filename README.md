@@ -5,7 +5,7 @@ Wemos module https://github.com/hallard/WeMos-Lora with a Wemos D1 mini pro. The
 is connected to my Pi with USB -> Micro USB.
 
 With this project we can send "commands" to the open LoRa network. Please keep in mind that
-the Wemos also needs some firmware for this. (This is work in progress)
+the Wemos also needs some firmware for this. This firmware can be found [here](https://github.com/sjoulbak/serial_lora_client)
 
 ## Questions
 
